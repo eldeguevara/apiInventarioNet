@@ -1,0 +1,192 @@
+-- Crea scripts SQL para:
+-- o Crear las tablas.
+-- o Insertar datos de prueba.
+-- o Consultas:
+-- § Total vendido por cliente.
+-- § Productos más vendidos.
+-- § Stock actual.
+
+--CREATE DATABASE apiinventario;
+-- GO
+
+-- USE apiinventario
+-- GO
+
+-- CREATE TABLE producto (
+-- 	id_producto INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+-- 	nombre_producto NVARCHAR(250) NOT NULL,
+-- 	precio DECIMAL(10, 2) DEFAULT 0 NOT NULL,
+-- 	stock INT DEFAULT 0 NOT NULL
+-- );
+
+-- CREATE TABLE cliente (
+-- 	id_cliente INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+-- 	nombre_cliente NVARCHAR(500) NOT NULL,
+-- 	email NVARCHAR(500)
+-- )
+
+-- CREATE TABLE venta (
+-- 	id_venta INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+-- 	fecha DATE DEFAULT CAST(GETDATE() AS DATE),
+-- 	id_cliente INT NOT NULL,
+-- 	FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
+-- )
+
+-- CREATE TABLE detalle_venta (
+-- 	id_detalle_venta INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+-- 	id_venta INT NOT NULL,
+-- 	id_producto INT NOT NULL,
+-- 	cantidad INT DEFAULT 0 NOT NULL,
+-- 	precio_unitario DECIMAL(10, 2) DEFAULT 0 NOT NULL,
+-- 	FOREIGN KEY (id_venta) REFERENCES venta(id_venta),
+-- 	FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
+-- )
+
+-- INSERT INTO producto
+-- (
+-- 	nombre_producto,
+-- 	precio,
+-- 	stock
+-- )
+-- VALUES
+-- (
+-- 	'Botella de agua pura',
+-- 	10.50,
+-- 	100
+-- ),
+-- (
+-- 	'platos desechables',
+-- 	6.50,
+-- 	78
+-- ),
+-- (
+-- 	'paquete de 6 jugos kerns',
+-- 	18.46,
+-- 	89
+-- )
+
+-- INSERT INTO cliente 
+-- (
+-- 	nombre_cliente,
+-- 	email
+-- )
+-- VALUES
+-- (
+-- 	'Diego Guevara',
+-- 	'diego07.guevara@gmail.com'
+-- ),
+-- (
+-- 	'Erika Guevara',
+-- 	'erikay.guevarac@gmail.com'
+-- )
+
+-- INSERT INTO venta
+-- (
+-- 	fecha,
+-- 	id_cliente
+-- )
+-- VALUES
+-- (
+-- 	GETDATE(),
+-- 	1
+-- ),
+-- (
+-- 	GETDATE(),
+-- 	2
+-- )
+
+-- INSERT INTO detalle_venta
+-- (
+-- 	id_venta,
+-- 	id_producto,
+-- 	cantidad,
+-- 	precio_unitario
+-- )
+-- VALUES
+-- (
+-- 	1,
+-- 	2,
+-- 	6,
+-- 	67.56
+-- ),
+-- (
+-- 	1,
+-- 	3,
+-- 	1,
+-- 	34.56
+-- ),
+-- (
+-- 	2,
+-- 	2,
+-- 	1,
+-- 	30.00
+-- )
+
+-- CREATE VIEW vwResumenVentas
+-- AS
+-- SELECT 
+-- 	t1.id_cliente,
+-- 	t1.nombre_cliente,
+-- 	t1.email,
+-- 	t2.fecha as fecha_venta,
+-- 	t4.id_producto,
+-- 	t4.nombre_producto,
+-- 	SUM(ISNULL(t3.precio_unitario, 0)) as total_venta,
+-- 	t4.precio as precio_actual_producto,
+-- 	t4.stock as stock_actual 
+-- FROM cliente as t1
+-- LEFT JOIN venta as t2
+-- 	ON t1.id_cliente = t2.id_cliente
+-- INNER JOIN detalle_venta as t3
+-- 	ON t2.id_venta = t3.id_venta
+-- LEFT JOIN producto as t4
+-- 	ON t3.id_producto = t4.id_producto
+-- GROUP BY
+-- 	t1.id_cliente,
+-- 	t1.nombre_cliente,
+-- 	t1.email,
+-- 	t2.fecha,
+-- 	t4.id_producto,
+-- 	t4.nombre_producto,
+-- 	t4.precio,
+-- 	t4.stock
+
+--TOTAL VENDIDIO POR CLIENTE
+-- SELECT 
+-- id_cliente,
+-- nombre_cliente,
+-- email,
+-- SUM(ISNULL(total_venta, 0)) AS total
+-- FROM vwResumenVentas
+-- GROUP BY
+-- id_cliente,
+-- nombre_cliente,
+-- email
+
+--PRODUCTOS MAS VENDIDOS
+-- WITH CTE_resumen_producto AS 
+-- (
+--     SELECT 
+--         id_producto,
+--         nombre_producto,
+--         SUM(ISNULL(precio_actual_producto, 0)) AS precio_actual_producto
+--     FROM vwResumenVentas
+--     GROUP BY 
+--         id_producto,
+--         nombre_producto
+-- )
+-- SELECT 
+-- * 
+-- FROM CTE_resumen_producto
+-- ORDER BY precio_actual_producto DESC
+
+--STOCK ACTUAL
+-- CREATE PROCEDURE spGetStockActual
+-- AS
+-- BEGIN
+--     SELECT 
+--         SUM(ISNULL(stock, 0)) as stock_actual 
+--     FROM producto
+-- END
+
+
