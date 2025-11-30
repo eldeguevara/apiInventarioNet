@@ -1,7 +1,36 @@
 using apiinventario.DataAccess;
+using apiinventario.Repositorys;
+using apiinventario.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//agregar modelado
+
+//productos
+builder.Services.AddScoped<ProductoRepository>();
+builder.Services.AddScoped<ProductoService>();
+
+//cliente
+builder.Services.AddScoped<ClienteRepository>();
+builder.Services.AddScoped<ClienteService>();
+
+//ventas
+builder.Services.AddScoped<ResumenVentasRepository>();
+builder.Services.AddScoped<VentasService>();
+
+
+//hablitar cors
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
 
 //conecctions DB
 const string ConnectionApiInventario = "ApiInventario";
@@ -17,6 +46,9 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
+
+//hablitar all cors
+app.UseCors("AllowAll");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

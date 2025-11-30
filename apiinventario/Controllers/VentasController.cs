@@ -2,8 +2,9 @@
 using apiinventario.Dtos;
 using apiinventario.Helpers;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using apiinventario.Services;
 using apiinventario.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace apiinventario.Controllers
 {
@@ -11,10 +12,12 @@ namespace apiinventario.Controllers
     [Route("api/venta")]
     public class VentasController : ControllerBase
     {
+        private readonly VentasService _ventasService;
         private readonly ApiInventarioContext _context;
 
-        public VentasController(ApiInventarioContext context)
+        public VentasController(VentasService ventasService, ApiInventarioContext context)
         {
+            _ventasService = ventasService;
             _context = context;
         }
 
@@ -22,7 +25,7 @@ namespace apiinventario.Controllers
         public async Task<IActionResult> GetAll()
         {
             return await ReponseHelper.HandleSend(async () => {
-                var resumenVenta = await _context.ResumenVentasView.ToListAsync();
+                var resumenVenta = await _ventasService.GetAllVentasAsync();
                 return resumenVenta;
             }, "Ventas listados correctamente.");
 
@@ -32,9 +35,7 @@ namespace apiinventario.Controllers
         public async Task<IActionResult> GetById(int idCliente)
         {
             return await ReponseHelper.HandleSend(async () => {
-                var resumenVenta = await _context.ResumenVentasView
-                    .Where(rv => rv.IdCliente == idCliente)
-                    .ToListAsync();
+                var resumenVenta = await _ventasService.GetVentasByClienteIdAsync(idCliente);
                 return resumenVenta;
             }, "Ventas listados correctamente.");
         }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("apiinventario")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f2da4b026019c78dd07303e8694490e699ea1248")]
 [assembly: System.Reflection.AssemblyProductAttribute("apiinventario")]
 [assembly: System.Reflection.AssemblyTitleAttribute("apiinventario")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,7 +1,6 @@
-﻿using apiinventario.DataAccess;
-using apiinventario.Helpers;
+﻿using apiinventario.Helpers;
+using apiinventario.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace apiinventario.Controllers
 {
@@ -9,11 +8,11 @@ namespace apiinventario.Controllers
     [Route("api/cliente")]
     public class ClienteController : ControllerBase
     {
-        private readonly ApiInventarioContext _context;
+        private ClienteService _clienteService;
 
-        public ClienteController(ApiInventarioContext context)
+        public ClienteController(ClienteService clienteService)
         {
-            _context = context;
+            _clienteService = clienteService;
         }
 
         // GET: Cliente
@@ -21,7 +20,7 @@ namespace apiinventario.Controllers
         public async Task<IActionResult> GetAll()
         {
             return await ReponseHelper.HandleSend(async () =>{
-                var clientes = await _context.ClienteModel.ToListAsync();
+                var clientes = await _clienteService.GetAllClientesAsync();
                 return clientes;
             }, "Clientes listados correctamente.");
         }

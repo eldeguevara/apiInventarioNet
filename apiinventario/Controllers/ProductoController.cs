@@ -1,7 +1,6 @@
-﻿using apiinventario.DataAccess;
-using apiinventario.Helpers;
+﻿using apiinventario.Helpers;
+using apiinventario.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace apiinventario.Controllers
 {
@@ -9,18 +8,18 @@ namespace apiinventario.Controllers
     [Route("api/producto")]
     public class ProductoController : ControllerBase
     {
-        private readonly ApiInventarioContext _context;
+        private readonly ProductoService _productoService;
 
-        public ProductoController(ApiInventarioContext context)
+        public ProductoController(ProductoService productoService)
         {
-            _context = context;
+            _productoService = productoService;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             return await ReponseHelper.HandleSend(async () =>{
-                var productos = await _context.ProductoModel.ToListAsync();
+                var productos = await _productoService.GetAllProductosAsync();
                 return productos;
             }, "Productos listados correctamente.");
             
