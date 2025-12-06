@@ -1,4 +1,5 @@
 ﻿using apiinventario.Models;
+using Microsoft.Build.Tasks.Deployment.Bootstrapper;
 
 namespace apiinventario.Interfaces
 {
@@ -6,6 +7,8 @@ namespace apiinventario.Interfaces
     {
 
         Task<List<ProductoModel>> GetAllAsync();
+
+        Task<ProductoModel?> findByIdProducto(int IdProducto, bool error = false);
 
     }
 }

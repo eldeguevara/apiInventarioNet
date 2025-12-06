@@ -19,6 +19,9 @@ builder.Services.AddScoped<ClienteService>();
 builder.Services.AddScoped<ResumenVentasRepository>();
 builder.Services.AddScoped<VentasService>();
 
+//detalle
+builder.Services.AddScoped<DetallleVentaRepository>();
+builder.Services.AddScoped<VentaRepository>();
 
 //hablitar cors
 builder.Services.AddCors(options =>

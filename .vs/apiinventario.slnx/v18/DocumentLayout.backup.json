@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\prograjr3\\Desktop\\.net\\apiinventario\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{ADB3BE19-9B8C-F0AA-9832-3D498C48427A}|apiinventario\\apiinventario.csproj|c:\\users\\prograjr3\\desktop\\.net\\apiinventario\\apiinventario\\services\\ventasservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADB3BE19-9B8C-F0AA-9832-3D498C48427A}|apiinventario\\apiinventario.csproj|solutionrelative:apiinventario\\services\\ventasservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{ADB3BE19-9B8C-F0AA-9832-3D498C48427A}|apiinventario\\apiinventario.csproj|c:\\users\\prograjr3\\desktop\\.net\\apiinventario\\apiinventario\\controllers\\ventascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ADB3BE19-9B8C-F0AA-9832-3D498C48427A}|apiinventario\\apiinventario.csproj|solutionrelative:apiinventario\\controllers\\ventascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -14,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,15 +26,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "VentasController.cs",
               "DocumentMoniker": "C:\\Users\\prograjr3\\Desktop\\.net\\apiinventario\\apiinventario\\Controllers\\VentasController.cs",
               "RelativeDocumentMoniker": "apiinventario\\Controllers\\VentasController.cs",
               "ToolTip": "C:\\Users\\prograjr3\\Desktop\\.net\\apiinventario\\apiinventario\\Controllers\\VentasController.cs",
               "RelativeToolTip": "apiinventario\\Controllers\\VentasController.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAACIAAAA/AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-30T03:38:12.751Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "VentasService.cs",
+              "DocumentMoniker": "C:\\Users\\prograjr3\\Desktop\\.net\\apiinventario\\apiinventario\\Services\\VentasService.cs",
+              "RelativeDocumentMoniker": "apiinventario\\Services\\VentasService.cs",
+              "ToolTip": "C:\\Users\\prograjr3\\Desktop\\.net\\apiinventario\\apiinventario\\Services\\VentasService.cs",
+              "RelativeToolTip": "apiinventario\\Services\\VentasService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBAAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T02:04:02.332Z",
               "EditorCaption": ""
             }
           ]

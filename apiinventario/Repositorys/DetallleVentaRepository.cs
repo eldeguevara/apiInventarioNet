@@ -6,20 +6,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace apiinventario.Repositorys
 {
-    public class VentaRepository : IVentaRepository
+    public class DetallleVentaRepository : IDetallleVentaRepository
     {
         private readonly ApiInventarioContext _context;
 
-        public VentaRepository(ApiInventarioContext context)
+        public DetallleVentaRepository(ApiInventarioContext context)
         {
             _context = context;
         }
 
-        public async Task<VentaModel> CreateAsync(VentaModel venta)
+        public async Task<DetalleVentaModel> CreateAsync(DetalleVentaModel detalle)
         {
-            _context.VentaModel!.Add(venta);
+            _context.DetalleVentaModel!.Add(detalle);
             await _context.SaveChangesAsync();
-            return venta;
+            return detalle;
         }
     }
 }

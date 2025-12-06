@@ -1,12 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\prograjr3\\Desktop\\.net\\apiinventario\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{ADB3BE19-9B8C-F0AA-9832-3D498C48427A}|apiinventario\\apiinventario.csproj|c:\\users\\prograjr3\\desktop\\.net\\apiinventario\\apiinventario\\controllers\\ventascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ADB3BE19-9B8C-F0AA-9832-3D498C48427A}|apiinventario\\apiinventario.csproj|solutionrelative:apiinventario\\controllers\\ventascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -14,24 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "VentasController.cs",
-              "DocumentMoniker": "C:\\Users\\prograjr3\\Desktop\\.net\\apiinventario\\apiinventario\\Controllers\\VentasController.cs",
-              "RelativeDocumentMoniker": "apiinventario\\Controllers\\VentasController.cs",
-              "ToolTip": "C:\\Users\\prograjr3\\Desktop\\.net\\apiinventario\\apiinventario\\Controllers\\VentasController.cs",
-              "RelativeToolTip": "apiinventario\\Controllers\\VentasController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwCYAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T03:38:12.751Z",
-              "EditorCaption": ""
             }
           ]
         }

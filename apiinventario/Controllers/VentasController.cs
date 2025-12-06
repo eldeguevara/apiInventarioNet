@@ -45,34 +45,8 @@ namespace apiinventario.Controllers
         {
             return await ReponseHelper.HandleSend(async () =>
             {
-                using var transaction = await _context.Database.BeginTransactionAsync();
-
-                try
-                {
-                    var venta = new VentaModel { IdCliente = dto.IdCliente, Fecha = DateTime.Now };
-                    _context.VentaModel!.Add(venta);
-                    await _context.SaveChangesAsync();
-
-                    var producto = await _context.ProductoModel!.FirstOrDefaultAsync(p => p.IdProducto == dto.IdProducto);
-                    if (producto == null) throw new Exception("Producto no encontrado");
-
-                    var detalle = new DetalleVentaModel { IdVenta = venta.IdVenta, IdProducto = dto.IdProducto, Cantidad = dto.Cantidad, PrecioUnitario = producto.Precio };
-                    _context.DetalleVentaModel!.Add(detalle);
-
-                    producto.Stock -= dto.Cantidad;
-                    if (producto.Stock < 0) throw new Exception("Stock insuficiente");
-
-                    await _context.SaveChangesAsync();
-
-                    await transaction.CommitAsync();
-
-                    return new { Venta = venta, Detalle = detalle };
-                }
-                catch
-                {
-                    await transaction.RollbackAsync();
-                    throw;
-                }
+                var result = await _ventasService.CreateVentaAsync(dto);
+                return result;
             }, "Venta creada correctamente");
         }
 
